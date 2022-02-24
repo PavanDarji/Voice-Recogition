@@ -1,0 +1,29 @@
+<html>
+
+<title>Voice Recognition</title>
+
+<body>
+
+    <h1>Voice Recognition</h1>
+
+    <textarea name="" id="speechToText" cols="50" rows="5"
+        placeholder="Your Voice Messages is here....."></textarea><br>
+    <button onclick="voice()">Click To Speak</button>
+
+</body>
+
+<script>
+
+    function voice() {
+        let recognition = new webkitSpeechRecognition();
+        recognition.lang = "en-GB";
+        recognition.onresult = function (event) {
+            console.log(event);
+            document.getElementById('speechToText').value = event.result[0][0].transcript;
+        }
+        recognition.start();
+    }
+
+</script>
+
+</html>
